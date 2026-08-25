@@ -1,0 +1,1552 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.6.3">
+
+  <hashTree>
+
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="API Store Performance Test Strategy" enabled="true">
+
+      <stringProp name="TestPlan.comments">API Store Performance Test Strategy - Version 1.0 - Created by Test Strategy Planner Agent</stringProp>
+
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+
+      <boolProp name="TestPlan.tearDown_on_shutdown">true</boolProp>
+
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
+
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+
+        <collectionProp name="Arguments.arguments">
+
+          <elementProp name="BASE_URL" elementType="Argument">
+
+            <stringProp name="Argument.name">BASE_URL</stringProp>
+
+            <stringProp name="Argument.value">https://api.store.example.com:443/v1</stringProp>
+
+            <stringProp name="Argument.metadata">=</stringProp>
+
+          </elementProp>
+
+          <elementProp name="TEST_DURATION" elementType="Argument">
+
+            <stringProp name="Argument.name">TEST_DURATION</stringProp>
+
+            <stringProp name="Argument.value">300</stringProp>
+
+            <stringProp name="Argument.metadata">=</stringProp>
+
+          </elementProp>
+
+          <elementProp name="RAMP_UP_TIME" elementType="Argument">
+
+            <stringProp name="Argument.name">RAMP_UP_TIME</stringProp>
+
+            <stringProp name="Argument.value">60</stringProp>
+
+            <stringProp name="Argument.metadata">=</stringProp>
+
+          </elementProp>
+
+          <elementProp name="DEFAULT_THREADS" elementType="Argument">
+
+            <stringProp name="Argument.name">DEFAULT_THREADS</stringProp>
+
+            <stringProp name="Argument.value">50</stringProp>
+
+            <stringProp name="Argument.metadata">=</stringProp>
+
+          </elementProp>
+
+        </collectionProp>
+
+      </elementProp>
+
+      <stringProp name="TestPlan.user_define_classpath"></stringProp>
+
+    </TestPlan>
+
+    <hashTree>
+
+      <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="HTTP Request Defaults" enabled="true">
+
+        <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+
+          <collectionProp name="Arguments.arguments"/>
+
+        </elementProp>
+
+        <stringProp name="HTTPSampler.domain">api.store.example.com</stringProp>
+
+        <stringProp name="HTTPSampler.port">443</stringProp>
+
+        <stringProp name="HTTPSampler.protocol">https</stringProp>
+
+        <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+
+        <stringProp name="HTTPSampler.path">/v1</stringProp>
+
+        <stringProp name="HTTPSampler.concurrentPool">6</stringProp>
+
+        <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+
+        <stringProp name="HTTPSampler.response_timeout"></stringProp>
+
+      </ConfigTestElement>
+
+      <hashTree/>
+
+      <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+
+        <collectionProp name="HeaderManager.headers">
+
+          <elementProp name="" elementType="Header">
+
+            <stringProp name="Header.name">Content-Type</stringProp>
+
+            <stringProp name="Header.value">application/json</stringProp>
+
+          </elementProp>
+
+          <elementProp name="" elementType="Header">
+
+            <stringProp name="Header.name">Accept</stringProp>
+
+            <stringProp name="Header.value">application/json</stringProp>
+
+          </elementProp>
+
+          <elementProp name="" elementType="Header">
+
+            <stringProp name="Header.name">User-Agent</stringProp>
+
+            <stringProp name="Header.value">JMeter-PerformanceTest/1.0</stringProp>
+
+          </elementProp>
+
+        </collectionProp>
+
+      </HeaderManager>
+
+      <hashTree/>
+
+      <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config - UserCredentials" enabled="true">
+
+        <stringProp name="delimiter">,</stringProp>
+
+        <stringProp name="fileEncoding">UTF-8</stringProp>
+
+        <stringProp name="filename">user_credentials.csv</stringProp>
+
+        <boolProp name="ignoreFirstLine">false</boolProp>
+
+        <boolProp name="quotedData">false</boolProp>
+
+        <boolProp name="recycle">true</boolProp>
+
+        <stringProp name="shareMode">shareMode.all</stringProp>
+
+        <boolProp name="stopThread">false</boolProp>
+
+        <stringProp name="variableNames">username,password</stringProp>
+
+      </CSVDataSet>
+
+      <hashTree/>
+
+      <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config - SearchParameters" enabled="true">
+
+        <stringProp name="delimiter">,</stringProp>
+
+        <stringProp name="fileEncoding">UTF-8</stringProp>
+
+        <stringProp name="filename">search_params.csv</stringProp>
+
+        <boolProp name="ignoreFirstLine">false</boolProp>
+
+        <boolProp name="quotedData">false</boolProp>
+
+        <boolProp name="recycle">true</boolProp>
+
+        <stringProp name="shareMode">shareMode.all</stringProp>
+
+        <boolProp name="stopThread">false</boolProp>
+
+        <stringProp name="variableNames">category,page</stringProp>
+
+      </CSVDataSet>
+
+      <hashTree/>
+
+      <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config - OrderData" enabled="true">
+
+        <stringProp name="delimiter">,</stringProp>
+
+        <stringProp name="fileEncoding">UTF-8</stringProp>
+
+        <stringProp name="filename">order_data.csv</stringProp>
+
+        <boolProp name="ignoreFirstLine">false</boolProp>
+
+        <boolProp name="quotedData">false</boolProp>
+
+        <boolProp name="recycle">true</boolProp>
+
+        <stringProp name="shareMode">shareMode.all</stringProp>
+
+        <boolProp name="stopThread">false</boolProp>
+
+        <stringProp name="variableNames">cartId,paymentMethod</stringProp>
+
+      </CSVDataSet>
+
+      <hashTree/>
+
+      <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config - AuthTokens" enabled="true">
+
+        <stringProp name="delimiter">,</stringProp>
+
+        <stringProp name="fileEncoding">UTF-8</stringProp>
+
+        <stringProp name="filename">auth_tokens.csv</stringProp>
+
+        <boolProp name="ignoreFirstLine">false</boolProp>
+
+        <boolProp name="quotedData">false</boolProp>
+
+        <boolProp name="recycle">true</boolProp>
+
+        <stringProp name="shareMode">shareMode.all</stringProp>
+
+        <boolProp name="stopThread">false</boolProp>
+
+        <stringProp name="variableNames">authToken,userId</stringProp>
+
+      </CSVDataSet>
+
+      <hashTree/>
+
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="TG01_Critical_Authentication_Flow" enabled="true">
+
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+
+          <intProp name="LoopController.loops">-1</intProp>
+
+        </elementProp>
+
+        <stringProp name="ThreadGroup.num_threads">50</stringProp>
+
+        <stringProp name="ThreadGroup.ramp_time">60</stringProp>
+
+        <boolProp name="ThreadGroup.scheduler">true</boolProp>
+
+        <stringProp name="ThreadGroup.duration">300</stringProp>
+
+        <stringProp name="ThreadGroup.delay">0</stringProp>
+
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+
+        <stringProp name="TestPlan.comments">Critical authentication and session management flow</stringProp>
+
+      </ThreadGroup>
+
+      <hashTree>
+
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="[CRITICAL] POST /auth/login - User Login and Token Issuance" enabled="true">
+
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+
+            <collectionProp name="Arguments.arguments">
+
+              <elementProp name="" elementType="HTTPArgument">
+
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+
+                <stringProp name="Argument.value">{&#xd;
+ &quot;username&quot;: &quot;${username}&quot;,&#xd;
+ &quot;password&quot;: &quot;${password}&quot;&#xd;
+}</stringProp>
+
+                <stringProp name="Argument.metadata">=</stringProp>
+
+              </elementProp>
+
+            </collectionProp>
+
+          </elementProp>
+
+          <stringProp name="HTTPSampler.domain"></stringProp>
+
+          <stringProp name="HTTPSampler.port"></stringProp>
+
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+
+          <stringProp name="HTTPSampler.path">/auth/login</stringProp>
+
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+
+        </HTTPSamplerProxy>
+
+        <hashTree>
+
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+
+            <collectionProp name="HeaderManager.headers">
+
+              <elementProp name="" elementType="Header">
+
+                <stringProp name="Header.name">Content-Type</stringProp>
+
+                <stringProp name="Header.value">application/json</stringProp>
+
+              </elementProp>
+
+            </collectionProp>
+
+          </HeaderManager>
+
+          <hashTree/>
+
+          <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="Extract Auth Token" enabled="true">
+
+            <stringProp name="JSONPostProcessor.referenceNames">authToken</stringProp>
+
+            <stringProp name="JSONPostProcessor.jsonPathExprs">$.token</stringProp>
+
+            <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+
+            <stringProp name="JSONPostProcessor.defaultValues">TOKEN_NOT_FOUND</stringProp>
+
+          </JSONPostProcessor>
+
+          <hashTree/>
+
+          <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="Extract User ID" enabled="true">
+
+            <stringProp name="JSONPostProcessor.referenceNames">userId</stringProp>
+
+            <stringProp name="JSONPostProcessor.jsonPathExprs">$.userId</stringProp>
+
+            <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+
+            <stringProp name="JSONPostProcessor.defaultValues">USER_ID_NOT_FOUND</stringProp>
+
+          </JSONPostProcessor>
+
+          <hashTree/>
+
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Code Assertion - 200" enabled="true">
+
+            <collectionProp name="Asserion.test_strings">
+
+              <stringProp name="49586">200</stringProp>
+
+            </collectionProp>
+
+            <stringProp name="Assertion.custom_message">Verify successful authentication response</stringProp>
+
+            <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+
+            <boolProp name="Assertion.assume_success">false</boolProp>
+
+            <intProp name="Assertion.test_type">8</intProp>
+
+          </ResponseAssertion>
+
+          <hashTree/>
+
+          <DurationAssertion guiclass="DurationAssertionGui" testclass="DurationAssertion" testname="Duration Assertion - 1000ms" enabled="true">
+
+            <stringProp name="DurationAssertion.duration">1000</stringProp>
+
+            <stringProp name="Assertion.custom_message">Critical SLA: Login must complete within 1000ms</stringProp>
+
+          </DurationAssertion>
+
+          <hashTree/>
+
+          <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="JSON Path Assertion - token exists" enabled="true">
+
+            <stringProp name="JSON_PATH">$.token</stringProp>
+
+            <stringProp name="EXPECTED_VALUE"></stringProp>
+
+            <boolProp name="JSONVALIDATION">false</boolProp>
+
+            <boolProp name="EXPECT_NULL">false</boolProp>
+
+            <boolProp name="INVERT">false</boolProp>
+
+            <boolProp name="ISREGEX">false</boolProp>
+
+            <stringProp name="Assertion.custom_message">Verify token field exists in response</stringProp>
+
+          </JSONPathAssertion>
+
+          <hashTree/>
+
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Size Assertion - Min 50 bytes" enabled="true">
+
+            <collectionProp name="Asserion.test_strings">
+
+              <stringProp name="1567">50</stringProp>
+
+            </collectionProp>
+
+            <stringProp name="Assertion.custom_message">Verify response contains meaningful data</stringProp>
+
+            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+
+            <boolProp name="Assertion.assume_success">false</boolProp>
+
+            <intProp name="Assertion.test_type">4</intProp>
+
+          </ResponseAssertion>
+
+          <hashTree/>
+
+        </hashTree>
+
+      </hashTree>
+
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="TG02_Critical_Product_Search_Flow" enabled="true">
+
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+
+          <intProp name="LoopController.loops">-1</intProp>
+
+        </elementProp>
+
+        <stringProp name="ThreadGroup.num_threads">50</stringProp>
+
+        <stringProp name="ThreadGroup.ramp_time">60</stringProp>
+
+        <boolProp name="ThreadGroup.scheduler">true</boolProp>
+
+        <stringProp name="ThreadGroup.duration">300</stringProp>
+
+        <stringProp name="ThreadGroup.delay">5</stringProp>
+
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+
+        <stringProp name="TestPlan.comments">High-traffic product catalog search and browsing operations</stringProp>
+
+      </ThreadGroup>
+
+      <hashTree>
+
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="[CRITICAL] GET /catalog/search - Search Product Catalog" enabled="true">
+
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+
+            <collectionProp name="Arguments.arguments">
+
+              <elementProp name="category" elementType="HTTPArgument">
+
+                <boolProp name="HTTPArgument.always_encode">true</boolProp>
+
+                <stringProp name="Argument.value">${category}</stringProp>
+
+                <stringProp name="Argument.metadata">=</stringProp>
+
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+
+                <stringProp name="Argument.name">category</stringProp>
+
+              </elementProp>
+
+              <elementProp name="page" elementType="HTTPArgument">
+
+                <boolProp name="HTTPArgument.always_encode">true</boolProp>
+
+                <stringProp name="Argument.value">${page}</stringProp>
+
+                <stringProp name="Argument.metadata">=</stringProp>
+
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+
+                <stringProp name="Argument.name">page</stringProp>
+
+              </elementProp>
+
+            </collectionProp>
+
+          </elementProp>
+
+          <stringProp name="HTTPSampler.domain"></stringProp>
+
+          <stringProp name="HTTPSampler.port"></stringProp>
+
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+
+          <stringProp name="HTTPSampler.path">/catalog/search</stringProp>
+
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+
+        </HTTPSamplerProxy>
+
+        <hashTree>
+
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+
+            <collectionProp name="HeaderManager.headers">
+
+              <elementProp name="" elementType="Header">
+
+                <stringProp name="Header.name">Authorization</stringProp>
+
+                <stringProp name="Header.value">Bearer ${authToken}</stringProp>
+
+              </elementProp>
+
+            </collectionProp>
+
+          </HeaderManager>
+
+          <hashTree/>
+
+          <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer - Think Time" enabled="true">
+
+            <stringProp name="ConstantTimer.delay">1000</stringProp>
+
+            <stringProp name="RandomTimer.range">500</stringProp>
+
+            <stringProp name="TestPlan.comments">Simulate realistic user think time between searches</stringProp>
+
+          </UniformRandomTimer>
+
+          <hashTree/>
+
+          <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="Extract Product Count" enabled="true">
+
+            <stringProp name="JSONPostProcessor.referenceNames">productCount</stringProp>
+
+            <stringProp name="JSONPostProcessor.jsonPathExprs">$.totalResults</stringProp>
+
+            <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+
+            <stringProp name="JSONPostProcessor.defaultValues">0</stringProp>
+
+          </JSONPostProcessor>
+
+          <hashTree/>
+
+          <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="Extract First Product ID" enabled="true">
+
+            <stringProp name="JSONPostProcessor.referenceNames">firstProductId</stringProp>
+
+            <stringProp name="JSONPostProcessor.jsonPathExprs">$.products[0].id</stringProp>
+
+            <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+
+            <stringProp name="JSONPostProcessor.defaultValues">NO_PRODUCT</stringProp>
+
+          </JSONPostProcessor>
+
+          <hashTree/>
+
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Code Assertion - 200" enabled="true">
+
+            <collectionProp name="Asserion.test_strings">
+
+              <stringProp name="49586">200</stringProp>
+
+            </collectionProp>
+
+            <stringProp name="Assertion.custom_message">Verify successful search response</stringProp>
+
+            <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+
+            <boolProp name="Assertion.assume_success">false</boolProp>
+
+            <intProp name="Assertion.test_type">8</intProp>
+
+          </ResponseAssertion>
+
+          <hashTree/>
+
+          <DurationAssertion guiclass="DurationAssertionGui" testclass="DurationAssertion" testname="Duration Assertion - 1000ms" enabled="true">
+
+            <stringProp name="DurationAssertion.duration">1000</stringProp>
+
+            <stringProp name="Assertion.custom_message">Critical SLA: Search must complete within 1000ms</stringProp>
+
+          </DurationAssertion>
+
+          <hashTree/>
+
+          <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="JSON Path Assertion - products exists" enabled="true">
+
+            <stringProp name="JSON_PATH">$.products</stringProp>
+
+            <stringProp name="EXPECTED_VALUE"></stringProp>
+
+            <boolProp name="JSONVALIDATION">false</boolProp>
+
+            <boolProp name="EXPECT_NULL">false</boolProp>
+
+            <boolProp name="INVERT">false</boolProp>
+
+            <boolProp name="ISREGEX">false</boolProp>
+
+            <stringProp name="Assertion.custom_message">Verify products array exists in response</stringProp>
+
+          </JSONPathAssertion>
+
+          <hashTree/>
+
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Size Assertion - Min 100 bytes" enabled="true">
+
+            <collectionProp name="Asserion.test_strings">
+
+              <stringProp name="49587">100</stringProp>
+
+            </collectionProp>
+
+            <stringProp name="Assertion.custom_message">Verify response contains product data</stringProp>
+
+            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+
+            <boolProp name="Assertion.assume_success">false</boolProp>
+
+            <intProp name="Assertion.test_type">4</intProp>
+
+          </ResponseAssertion>
+
+          <hashTree/>
+
+        </hashTree>
+
+      </hashTree>
+
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="TG03_Critical_Checkout_Order_Flow" enabled="true">
+
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+
+          <intProp name="LoopController.loops">-1</intProp>
+
+        </elementProp>
+
+        <stringProp name="ThreadGroup.num_threads">50</stringProp>
+
+        <stringProp name="ThreadGroup.ramp_time">60</stringProp>
+
+        <boolProp name="ThreadGroup.scheduler">true</boolProp>
+
+        <stringProp name="ThreadGroup.duration">300</stringProp>
+
+        <stringProp name="ThreadGroup.delay">10</stringProp>
+
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+
+        <stringProp name="TestPlan.comments">Core business transaction - order creation and checkout processing</stringProp>
+
+      </ThreadGroup>
+
+      <hashTree>
+
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="[CRITICAL] POST /checkout/orders - Create New Purchase Order" enabled="true">
+
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+
+            <collectionProp name="Arguments.arguments">
+
+              <elementProp name="" elementType="HTTPArgument">
+
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+
+                <stringProp name="Argument.value">{&#xd;
+ &quot;cartId&quot;: &quot;${cartId}&quot;,&#xd;
+ &quot;paymentMethod&quot;: &quot;${paymentMethod}&quot;,&#xd;
+ &quot;userId&quot;: &quot;${userId}&quot;&#xd;
+}</stringProp>
+
+                <stringProp name="Argument.metadata">=</stringProp>
+
+              </elementProp>
+
+            </collectionProp>
+
+          </elementProp>
+
+          <stringProp name="HTTPSampler.domain"></stringProp>
+
+          <stringProp name="HTTPSampler.port"></stringProp>
+
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+
+          <stringProp name="HTTPSampler.path">/checkout/orders</stringProp>
+
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+
+        </HTTPSamplerProxy>
+
+        <hashTree>
+
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+
+            <collectionProp name="HeaderManager.headers">
+
+              <elementProp name="" elementType="Header">
+
+                <stringProp name="Header.name">Content-Type</stringProp>
+
+                <stringProp name="Header.value">application/json</stringProp>
+
+              </elementProp>
+
+              <elementProp name="" elementType="Header">
+
+                <stringProp name="Header.name">Authorization</stringProp>
+
+                <stringProp name="Header.value">Bearer ${authToken}</stringProp>
+
+              </elementProp>
+
+            </collectionProp>
+
+          </HeaderManager>
+
+          <hashTree/>
+
+          <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="Extract Order ID" enabled="true">
+
+            <stringProp name="JSONPostProcessor.referenceNames">orderId</stringProp>
+
+            <stringProp name="JSONPostProcessor.jsonPathExprs">$.orderId</stringProp>
+
+            <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+
+            <stringProp name="JSONPostProcessor.defaultValues">ORDER_NOT_CREATED</stringProp>
+
+          </JSONPostProcessor>
+
+          <hashTree/>
+
+          <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="Extract Order Status" enabled="true">
+
+            <stringProp name="JSONPostProcessor.referenceNames">orderStatus</stringProp>
+
+            <stringProp name="JSONPostProcessor.jsonPathExprs">$.status</stringProp>
+
+            <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+
+            <stringProp name="JSONPostProcessor.defaultValues">UNKNOWN</stringProp>
+
+          </JSONPostProcessor>
+
+          <hashTree/>
+
+          <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="Extract Order Total" enabled="true">
+
+            <stringProp name="JSONPostProcessor.referenceNames">orderTotal</stringProp>
+
+            <stringProp name="JSONPostProcessor.jsonPathExprs">$.totalAmount</stringProp>
+
+            <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+
+            <stringProp name="JSONPostProcessor.defaultValues">0.00</stringProp>
+
+          </JSONPostProcessor>
+
+          <hashTree/>
+
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Code Assertion - 201" enabled="true">
+
+            <collectionProp name="Asserion.test_strings">
+
+              <stringProp name="49587">201</stringProp>
+
+            </collectionProp>
+
+            <stringProp name="Assertion.custom_message">Verify order created successfully</stringProp>
+
+            <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+
+            <boolProp name="Assertion.assume_success">false</boolProp>
+
+            <intProp name="Assertion.test_type">8</intProp>
+
+          </ResponseAssertion>
+
+          <hashTree/>
+
+          <DurationAssertion guiclass="DurationAssertionGui" testclass="DurationAssertion" testname="Duration Assertion - 1000ms" enabled="true">
+
+            <stringProp name="DurationAssertion.duration">1000</stringProp>
+
+            <stringProp name="Assertion.custom_message">Critical SLA: Order creation must complete within 1000ms</stringProp>
+
+          </DurationAssertion>
+
+          <hashTree/>
+
+          <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="JSON Path Assertion - orderId exists" enabled="true">
+
+            <stringProp name="JSON_PATH">$.orderId</stringProp>
+
+            <stringProp name="EXPECTED_VALUE"></stringProp>
+
+            <boolProp name="JSONVALIDATION">false</boolProp>
+
+            <boolProp name="EXPECT_NULL">false</boolProp>
+
+            <boolProp name="INVERT">false</boolProp>
+
+            <boolProp name="ISREGEX">false</boolProp>
+
+            <stringProp name="Assertion.custom_message">Verify orderId field exists in response</stringProp>
+
+          </JSONPathAssertion>
+
+          <hashTree/>
+
+          <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="JSON Path Assertion - status valid" enabled="true">
+
+            <stringProp name="JSON_PATH">$.status</stringProp>
+
+            <stringProp name="EXPECTED_VALUE">CREATED|PENDING|CONFIRMED</stringProp>
+
+            <boolProp name="JSONVALIDATION">true</boolProp>
+
+            <boolProp name="EXPECT_NULL">false</boolProp>
+
+            <boolProp name="INVERT">false</boolProp>
+
+            <boolProp name="ISREGEX">true</boolProp>
+
+            <stringProp name="Assertion.custom_message">Verify order status is valid</stringProp>
+
+          </JSONPathAssertion>
+
+          <hashTree/>
+
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Size Assertion - Min 80 bytes" enabled="true">
+
+            <collectionProp name="Asserion.test_strings">
+
+              <stringProp name="1568">80</stringProp>
+
+            </collectionProp>
+
+            <stringProp name="Assertion.custom_message">Verify response contains order confirmation data</stringProp>
+
+            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+
+            <boolProp name="Assertion.assume_success">false</boolProp>
+
+            <intProp name="Assertion.test_type">4</intProp>
+
+          </ResponseAssertion>
+
+          <hashTree/>
+
+        </hashTree>
+
+      </hashTree>
+
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="TG04_High_Priority_User_Profile_Flow" enabled="true">
+
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+
+          <intProp name="LoopController.loops">-1</intProp>
+
+        </elementProp>
+
+        <stringProp name="ThreadGroup.num_threads">50</stringProp>
+
+        <stringProp name="ThreadGroup.ramp_time">60</stringProp>
+
+        <boolProp name="ThreadGroup.scheduler">true</boolProp>
+
+        <stringProp name="ThreadGroup.duration">300</stringProp>
+
+        <stringProp name="ThreadGroup.delay">15</stringProp>
+
+        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
+
+        <stringProp name="TestPlan.comments">User profile and account data retrieval operations</stringProp>
+
+      </ThreadGroup>
+
+      <hashTree>
+
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="[HIGH] GET /users/profile - Get User Profile" enabled="true">
+
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+
+            <collectionProp name="Arguments.arguments"/>
+
+          </elementProp>
+
+          <stringProp name="HTTPSampler.domain"></stringProp>
+
+          <stringProp name="HTTPSampler.port"></stringProp>
+
+          <stringProp name="HTTPSampler.protocol"></stringProp>
+
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+
+          <stringProp name="HTTPSampler.path">/users/profile</stringProp>
+
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+
+        </HTTPSamplerProxy>
+
+        <hashTree>
+
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+
+            <collectionProp name="HeaderManager.headers">
+
+              <elementProp name="" elementType="Header">
+
+                <stringProp name="Header.name">Authorization</stringProp>
+
+                <stringProp name="Header.value">Bearer ${authToken}</stringProp>
+
+              </elementProp>
+
+            </collectionProp>
+
+          </HeaderManager>
+
+          <hashTree/>
+
+          <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer - Think Time" enabled="true">
+
+            <stringProp name="ConstantTimer.delay">1000</stringProp>
+
+            <stringProp name="RandomTimer.range">500</stringProp>
+
+            <stringProp name="TestPlan.comments">Simulate realistic user think time for profile viewing</stringProp>
+
+          </UniformRandomTimer>
+
+          <hashTree/>
+
+          <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="Extract Profile User ID" enabled="true">
+
+            <stringProp name="JSONPostProcessor.referenceNames">profileUserId</stringProp>
+
+            <stringProp name="JSONPostProcessor.jsonPathExprs">$.userId</stringProp>
+
+            <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+
+            <stringProp name="JSONPostProcessor.defaultValues">NO_USER_ID</stringProp>
+
+          </JSONPostProcessor>
+
+          <hashTree/>
+
+          <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="Extract User Email" enabled="true">
+
+            <stringProp name="JSONPostProcessor.referenceNames">userEmail</stringProp>
+
+            <stringProp name="JSONPostProcessor.jsonPathExprs">$.email</stringProp>
+
+            <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+
+            <stringProp name="JSONPostProcessor.defaultValues">NO_EMAIL</stringProp>
+
+          </JSONPostProcessor>
+
+          <hashTree/>
+
+          <JSONPostProcessor guiclass="JSONPostProcessorGui" testclass="JSONPostProcessor" testname="Extract Account Status" enabled="true">
+
+            <stringProp name="JSONPostProcessor.referenceNames">accountStatus</stringProp>
+
+            <stringProp name="JSONPostProcessor.jsonPathExprs">$.accountStatus</stringProp>
+
+            <stringProp name="JSONPostProcessor.match_numbers">1</stringProp>
+
+            <stringProp name="JSONPostProcessor.defaultValues">UNKNOWN</stringProp>
+
+          </JSONPostProcessor>
+
+          <hashTree/>
+
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Code Assertion - 200" enabled="true">
+
+            <collectionProp name="Asserion.test_strings">
+
+              <stringProp name="49586">200</stringProp>
+
+            </collectionProp>
+
+            <stringProp name="Assertion.custom_message">Verify successful profile retrieval</stringProp>
+
+            <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+
+            <boolProp name="Assertion.assume_success">false</boolProp>
+
+            <intProp name="Assertion.test_type">8</intProp>
+
+          </ResponseAssertion>
+
+          <hashTree/>
+
+          <DurationAssertion guiclass="DurationAssertionGui" testclass="DurationAssertion" testname="Duration Assertion - 1500ms" enabled="true">
+
+            <stringProp name="DurationAssertion.duration">1500</stringProp>
+
+            <stringProp name="Assertion.custom_message">High priority SLA: Profile fetch must complete within 1500ms</stringProp>
+
+          </DurationAssertion>
+
+          <hashTree/>
+
+          <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="JSON Path Assertion - userId exists" enabled="true">
+
+            <stringProp name="JSON_PATH">$.userId</stringProp>
+
+            <stringProp name="EXPECTED_VALUE"></stringProp>
+
+            <boolProp name="JSONVALIDATION">false</boolProp>
+
+            <boolProp name="EXPECT_NULL">false</boolProp>
+
+            <boolProp name="INVERT">false</boolProp>
+
+            <boolProp name="ISREGEX">false</boolProp>
+
+            <stringProp name="Assertion.custom_message">Verify userId field exists in response</stringProp>
+
+          </JSONPathAssertion>
+
+          <hashTree/>
+
+          <JSONPathAssertion guiclass="JSONPathAssertionGui" testclass="JSONPathAssertion" testname="JSON Path Assertion - email exists" enabled="true">
+
+            <stringProp name="JSON_PATH">$.email</stringProp>
+
+            <stringProp name="EXPECTED_VALUE"></stringProp>
+
+            <boolProp name="JSONVALIDATION">false</boolProp>
+
+            <boolProp name="EXPECT_NULL">false</boolProp>
+
+            <boolProp name="INVERT">false</boolProp>
+
+            <boolProp name="ISREGEX">false</boolProp>
+
+            <stringProp name="Assertion.custom_message">Verify email field exists in response</stringProp>
+
+          </JSONPathAssertion>
+
+          <hashTree/>
+
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Size Assertion - Min 100 bytes" enabled="true">
+
+            <collectionProp name="Asserion.test_strings">
+
+              <stringProp name="49587">100</stringProp>
+
+            </collectionProp>
+
+            <stringProp name="Assertion.custom_message">Verify response contains profile data</stringProp>
+
+            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+
+            <boolProp name="Assertion.assume_success">false</boolProp>
+
+            <intProp name="Assertion.test_type">4</intProp>
+
+          </ResponseAssertion>
+
+          <hashTree/>
+
+        </hashTree>
+
+      </hashTree>
+
+      <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary Report" enabled="true">
+
+        <boolProp name="ResultCollector.error_logging">false</boolProp>
+
+        <objProp>
+
+          <name>saveConfig</name>
+
+          <value class="SampleSaveConfiguration">
+
+            <time>true</time>
+
+            <latency>true</latency>
+
+            <timestamp>true</timestamp>
+
+            <success>true</success>
+
+            <label>true</label>
+
+            <code>true</code>
+
+            <message>true</message>
+
+            <threadName>true</threadName>
+
+            <dataType>true</dataType>
+
+            <encoding>false</encoding>
+
+            <assertions>true</assertions>
+
+            <subresults>true</subresults>
+
+            <responseData>false</responseData>
+
+            <samplerData>false</samplerData>
+
+            <xml>false</xml>
+
+            <fieldNames>true</fieldNames>
+
+            <responseHeaders>false</responseHeaders>
+
+            <requestHeaders>false</requestHeaders>
+
+            <responseDataOnError>false</responseDataOnError>
+
+            <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+
+            <assertionsResultsToSave>0</assertionsResultsToSave>
+
+            <bytes>true</bytes>
+
+            <sentBytes>true</sentBytes>
+
+            <url>true</url>
+
+            <threadCounts>true</threadCounts>
+
+            <idleTime>true</idleTime>
+
+            <connectTime>true</connectTime>
+
+          </value>
+
+        </objProp>
+
+        <stringProp name="filename">summary_report.jtl</stringProp>
+
+      </ResultCollector>
+
+      <hashTree/>
+
+      <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+
+        <boolProp name="ResultCollector.error_logging">true</boolProp>
+
+        <objProp>
+
+          <name>saveConfig</name>
+
+          <value class="SampleSaveConfiguration">
+
+            <time>true</time>
+
+            <latency>true</latency>
+
+            <timestamp>true</timestamp>
+
+            <success>true</success>
+
+            <label>true</label>
+
+            <code>true</code>
+
+            <message>true</message>
+
+            <threadName>true</threadName>
+
+            <dataType>true</dataType>
+
+            <encoding>false</encoding>
+
+            <assertions>true</assertions>
+
+            <subresults>true</subresults>
+
+            <responseData>false</responseData>
+
+            <samplerData>false</samplerData>
+
+            <xml>false</xml>
+
+            <fieldNames>true</fieldNames>
+
+            <responseHeaders>false</responseHeaders>
+
+            <requestHeaders>false</requestHeaders>
+
+            <responseDataOnError>true</responseDataOnError>
+
+            <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+
+            <assertionsResultsToSave>0</assertionsResultsToSave>
+
+            <bytes>true</bytes>
+
+            <sentBytes>true</sentBytes>
+
+            <url>true</url>
+
+            <threadCounts>true</threadCounts>
+
+            <idleTime>true</idleTime>
+
+            <connectTime>true</connectTime>
+
+          </value>
+
+        </objProp>
+
+        <stringProp name="filename"></stringProp>
+
+      </ResultCollector>
+
+      <hashTree/>
+
+      <ResultCollector guiclass="StatVisualizer" testclass="ResultCollector" testname="Aggregate Report" enabled="true">
+
+        <boolProp name="ResultCollector.error_logging">false</boolProp>
+
+        <objProp>
+
+          <name>saveConfig</name>
+
+          <value class="SampleSaveConfiguration">
+
+            <time>true</time>
+
+            <latency>true</latency>
+
+            <timestamp>true</timestamp>
+
+            <success>true</success>
+
+            <label>true</label>
+
+            <code>true</code>
+
+            <message>true</message>
+
+            <threadName>true</threadName>
+
+            <dataType>true</dataType>
+
+            <encoding>false</encoding>
+
+            <assertions>true</assertions>
+
+            <subresults>true</subresults>
+
+            <responseData>false</responseData>
+
+            <samplerData>false</samplerData>
+
+            <xml>false</xml>
+
+            <fieldNames>true</fieldNames>
+
+            <responseHeaders>false</responseHeaders>
+
+            <requestHeaders>false</requestHeaders>
+
+            <responseDataOnError>false</responseDataOnError>
+
+            <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+
+            <assertionsResultsToSave>0</assertionsResultsToSave>
+
+            <bytes>true</bytes>
+
+            <sentBytes>true</sentBytes>
+
+            <url>true</url>
+
+            <threadCounts>true</threadCounts>
+
+            <idleTime>true</idleTime>
+
+            <connectTime>true</connectTime>
+
+          </value>
+
+        </objProp>
+
+        <stringProp name="filename">aggregate_results.csv</stringProp>
+
+      </ResultCollector>
+
+      <hashTree/>
+
+      <ResultCollector guiclass="RespTimeGraphVisualizer" testclass="ResultCollector" testname="Response Time Graph" enabled="true">
+
+        <boolProp name="ResultCollector.error_logging">false</boolProp>
+
+        <objProp>
+
+          <name>saveConfig</name>
+
+          <value class="SampleSaveConfiguration">
+
+            <time>true</time>
+
+            <latency>true</latency>
+
+            <timestamp>true</timestamp>
+
+            <success>true</success>
+
+            <label>true</label>
+
+            <code>true</code>
+
+            <message>true</message>
+
+            <threadName>true</threadName>
+
+            <dataType>true</dataType>
+
+            <encoding>false</encoding>
+
+            <assertions>true</assertions>
+
+            <subresults>true</subresults>
+
+            <responseData>false</responseData>
+
+            <samplerData>false</samplerData>
+
+            <xml>false</xml>
+
+            <fieldNames>true</fieldNames>
+
+            <responseHeaders>false</responseHeaders>
+
+            <requestHeaders>false</requestHeaders>
+
+            <responseDataOnError>false</responseDataOnError>
+
+            <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+
+            <assertionsResultsToSave>0</assertionsResultsToSave>
+
+            <bytes>true</bytes>
+
+            <sentBytes>true</sentBytes>
+
+            <url>true</url>
+
+            <threadCounts>true</threadCounts>
+
+            <idleTime>true</idleTime>
+
+            <connectTime>true</connectTime>
+
+          </value>
+
+        </objProp>
+
+        <stringProp name="filename"></stringProp>
+
+      </ResultCollector>
+
+      <hashTree/>
+
+      <BackendListener guiclass="BackendListenerGui" testclass="BackendListener" testname="Backend Listener - InfluxDB" enabled="true">
+
+        <elementProp name="arguments" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" enabled="true">
+
+          <collectionProp name="Arguments.arguments">
+
+            <elementProp name="influxdbMetricsSender" elementType="Argument">
+
+              <stringProp name="Argument.name">influxdbMetricsSender</stringProp>
+
+              <stringProp name="Argument.value">org.apache.jmeter.visualizers.backend.influxdb.HttpMetricsSender</stringProp>
+
+              <stringProp name="Argument.metadata">=</stringProp>
+
+            </elementProp>
+
+            <elementProp name="influxdbUrl" elementType="Argument">
+
+              <stringProp name="Argument.name">influxdbUrl</stringProp>
+
+              <stringProp name="Argument.value">http://localhost:8086/write?db=jmeter</stringProp>
+
+              <stringProp name="Argument.metadata">=</stringProp>
+
+            </elementProp>
+
+            <elementProp name="application" elementType="Argument">
+
+              <stringProp name="Argument.name">application</stringProp>
+
+              <stringProp name="Argument.value">API_Store_Performance_Test</stringProp>
+
+              <stringProp name="Argument.metadata">=</stringProp>
+
+            </elementProp>
+
+            <elementProp name="measurement" elementType="Argument">
+
+              <stringProp name="Argument.name">measurement</stringProp>
+
+              <stringProp name="Argument.value">jmeter</stringProp>
+
+              <stringProp name="Argument.metadata">=</stringProp>
+
+            </elementProp>
+
+            <elementProp name="summaryOnly" elementType="Argument">
+
+              <stringProp name="Argument.name">summaryOnly</stringProp>
+
+              <stringProp name="Argument.value">false</stringProp>
+
+              <stringProp name="Argument.metadata">=</stringProp>
+
+            </elementProp>
+
+            <elementProp name="samplersRegex" elementType="Argument">
+
+              <stringProp name="Argument.name">samplersRegex</stringProp>
+
+              <stringProp name="Argument.value">.*</stringProp>
+
+              <stringProp name="Argument.metadata">=</stringProp>
+
+            </elementProp>
+
+            <elementProp name="percentiles" elementType="Argument">
+
+              <stringProp name="Argument.name">percentiles</stringProp>
+
+              <stringProp name="Argument.value">90;95;99</stringProp>
+
+              <stringProp name="Argument.metadata">=</stringProp>
+
+            </elementProp>
+
+            <elementProp name="testTitle" elementType="Argument">
+
+              <stringProp name="Argument.name">testTitle</stringProp>
+
+              <stringProp name="Argument.value">API Store Performance Test</stringProp>
+
+              <stringProp name="Argument.metadata">=</stringProp>
+
+            </elementProp>
+
+            <elementProp name="eventTags" elementType="Argument">
+
+              <stringProp name="Argument.name">eventTags</stringProp>
+
+              <stringProp name="Argument.value"></stringProp>
+
+              <stringProp name="Argument.metadata">=</stringProp>
+
+            </elementProp>
+
+          </collectionProp>
+
+        </elementProp>
+
+        <stringProp name="classname">org.apache.jmeter.visualizers.backend.influxdb.InfluxdbBackendListenerClient</stringProp>
+
+      </BackendListener>
+
+      <hashTree/>
+
+    </hashTree>
+
+  </hashTree>
+
+</jmeterTestPlan>
